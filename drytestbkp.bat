@@ -1,13 +1,10 @@
 :EnterSelection
-echo Hi, Welcome to the R3 UP process script. 
-echo This script copies project's directories and files from your local computer to Houfile5 according to the UP PROCESS
-echo Please make sure the following have been completed:
-echo 1. The T1 folder have been zipped
-echo 2. All files to be moved are saved in the right location inside project folder.
-pause
+echo Let's backup your DryTest Folder to Houfile5.
+echo Please make sure the T1 folder is zipped to T1.zip and stored next to the original T1 folder.
+echo .
 
 :enterprojnum
-SET /P projnum=Please enter 5 digit project number : 
+SET /P projnum=Please enter 5 digit project number (#####) : 
 echo %projnum% | findstr /r "^[1-9][0-9]*$">nul
 if %errorlevel% equ 0 (
     GOTO errormessage1
@@ -18,14 +15,14 @@ if %result% NEQ 5 (
 ) 
 
 :enterlinename
-SET /P linename=Please enter Linename :
+SET /P linename=Please enter Linename (##LAUREC) :
 call :strlen result linename
 if %result% NEQ 8 (
     GOTO errormessage2
 ) 
 
 :entertechn
-SET /P techn=Please enter 3 letters Technology :
+SET /P techn=Please enter 3 letters Technology (CBG, CDP, BMD, CDG, BMG, ...) :
 call :strlen result techn
 if %result% NEQ 3 (
     GOTO errormessage3
@@ -41,8 +38,7 @@ pause
 
 robocopy %projectpath% %T1projectdest% T1.zip /mt /z
 
-echo Copy completed
-
+echo Copy completed !
 pause
 GOTO End
 
