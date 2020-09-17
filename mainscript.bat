@@ -1,6 +1,7 @@
 @echo off
 
-:Welcome
+:Start
+::Display welcome message and instructions
 echo Hi, Welcome to the R3 UP process script. 
 echo This script copies project's directories and files from your local computer, 
 echo to Houfile5 and Houfile1 according to the UP PROCESS.
@@ -10,6 +11,7 @@ pause
 
 
 :menu
+::Delete screen to make some space and display menu with selection list
 cls
 echo.
 echo Select the action you want to perform :
@@ -24,6 +26,7 @@ echo ==========================================
 
 
 :MakeSelection
+::Prompt user to enter selection
 set /p SelectOption= Please enter your selection : 
 
 if /I "%SelectOption%" EQU "A" goto :ActionA
@@ -38,29 +41,39 @@ if /I "%SelectOption%" NEQ "C" goto :D
 if /I "%SelectOption%" EQU "D" goto :ActionD
 if /I "%SelectOption%" NEQ "D" goto :Error
 
+::in the following sections validate and diplay selection
 :ActionA
 echo You selected option %SelectOption% : backup T1 folder
+echo.
+echo ==========================
 call drytestbkp.bat
 goto End
 
 :ActionB
 echo Running option %SelectOption% : backup tool documents
+echo.
+echo ==========================
 call tooldocbkp.bat
 goto End
 
 
 :ActionC
 echo Running option %SelectOption% : backup survey documents and MRK data to Houfile5
+echo.
+echo ==========================
 call surveydocbkp.bat
 goto End
 
 
 :ActionD
 echo Running option %SelectOption% : backup actual survey (Raw) data to Houfile1 for evaluation
+echo.
+echo ==========================
 call rawdatabkp.bat
 goto End
 
 :Error
+echo.
 echo wrong selection made! Please enter "A", "B", "C" or "D".
 echo Or close the program to exit.
 pause
@@ -68,10 +81,10 @@ goto menu
 
 
 :End
+echo.
 echo Would like to perform another action ?
 set /p EndSelect= Please enter your selection [Y / N] : 
 
 if /I "%EndSelect%" EQU "Y" goto :menu
-if /I "%EndSelect%" NEQ "Y" OR "%EndSelect%" EQU "N" goto :closing
-
-pause
+::if /I "%EndSelect%" NEQ "Y" 
+echo Thank you ! See you next time.
