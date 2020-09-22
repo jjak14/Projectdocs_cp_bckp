@@ -69,7 +69,7 @@ SET /P toolname=Please enter tool name (ie: C10-1.IF, B06-1.Q, ...) :
 ::handle error in typing toolname. using workaround with regex
 
 ::print out toolname entered and try to match it against regex
-echo %toolname%| findstr /r "^[a-zA-Z][0-5][0-9]-[0-9].[a-zA-Z][a-zA-Z]$">nul
+echo %toolname%| findstr /r "^[a-zA-Z][0-5][0-9]-[0-9][.][a-zA-Z][a-zA-Z]$">nul
 
 ::if there is a match errorlevel should return 0 otherwise 1 and 2
 ::if errorlevel is 0 go to next section of the project
@@ -79,7 +79,7 @@ if %errorlevel% EQU 0 (
 )
 
 ::if errorlevel is 1, repeat print out toolname entered and try to match it against second regex
-echo %toolname%| findstr /r "^[a-zA-Z][0-5][0-9]-[0-9].[a-zA-Z]$">nul
+echo %toolname%| findstr /r "^[a-zA-Z][0-5][0-9]-[0-9][.][a-zA-Z]$">nul
 
 if %errorlevel% NEQ 0 (
     ::if errorlevel is 0 there is a match below action will be ignored

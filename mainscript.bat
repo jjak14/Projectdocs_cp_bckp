@@ -2,25 +2,20 @@
 
 :Start
 ::Display welcome message and instructions
-echo Hi, Welcome to the R3 UP process script. 
-echo This script copies project's directories and files from your local computer, 
-echo to Houfile5 and Houfile1 according to the UP PROCESS.
-echo Please make sure the folders that needs to be zipped are indeed zipped,
-echo and all files to be moved are saved in the right directories inside the project's folder.
+echo This script copies project's directories and files from your local computer to the server. 
 pause
 
-
 :menu
-::Delete screen to make some space and display menu with selection list
+::Clear screen to make some space and display menu with selection list
 cls
 echo.
 echo Select the action you want to perform :
 echo ==========================================
 echo.
-echo [A] To copy DryTest data to Houfile5 (backup T1 folder)
-echo [B] To copy Survey resources documents to Houfile5 (backup tool documents)
-echo [C] To copy post survey documents and MRK folder to Houfile5 (backup survey documents)
-echo [D] To copy Raw data to Houfile1 (backup actual survey data to Houfile1 for evaluation)
+echo [A] Copy DryTest data to Houfile5.
+echo [B] Copy Survey resources documents to Houfile5.
+echo [C] Copy post-survey documents and MRK folder to Houfile5.
+echo [D] Copy Raw data to Houfile1.
 echo.
 echo ==========================================
 
@@ -43,6 +38,7 @@ if /I "%SelectOption%" NEQ "D" goto :Error
 
 ::in the following sections validate and diplay selection
 :ActionA
+echo.
 echo You selected option %SelectOption% : backup T1 folder
 echo.
 echo ==========================
@@ -50,6 +46,7 @@ call drytestbkp.bat
 goto End
 
 :ActionB
+echo.
 echo Running option %SelectOption% : backup tool documents
 echo.
 echo ==========================
@@ -58,6 +55,7 @@ goto End
 
 
 :ActionC
+echo.
 echo Running option %SelectOption% : backup survey documents and MRK data to Houfile5
 echo.
 echo ==========================
@@ -66,6 +64,7 @@ goto End
 
 
 :ActionD
+echo.
 echo Running option %SelectOption% : backup actual survey (Raw) data to Houfile1 for evaluation
 echo.
 echo ==========================
