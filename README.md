@@ -27,7 +27,7 @@ second option will handle all post survey copies:
     - MRK, DHA and statistics folder to Houfile5
     - RAW data to Houfile1
 
-**Note:** 
-    1. I checked how to create hashfile (SHA1) in batch file and I need to install a tool to successfully handle it.
+**Note:** \
+    1. I checked how to create hashfile (SHA1) in batch file and I need to install a tool to successfully handle it.\
     2. I use robocopy with the flag "/z" to handle error and retry copy until it succeed. obviously there should better way
     to get this done; I will research around better options.
